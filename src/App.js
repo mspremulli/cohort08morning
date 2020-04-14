@@ -1,32 +1,26 @@
 import React, {Component} from 'react';
 import './App.css';
 import Post from './components/Post.js';
+import posts from './mock/posts.js';
 
 class App extends Component {
-   post = {
-    posterName: 'Arnell Millhouse',
-    resourceAuthor: 'Albert Einstein',
-    skillLevel: 'Advanced',
-    cohort: '0',
-    title: 'Universal Equation',
-    categories: ['FORTRAN','redux'],
-    summary: 'This was a great article about blending Fortran and redux',
-    link: 'www.google.com/search?q=Albert20Einstein',
-    resourceType: 'Article',
-    datePublished: '1943-10-03.00:00:00z',
-    videoLength: null,
-    timeToComplete: 3,
-    rating: 5,
-    comments: [{poster: 'Cliff', text: 'Nice Post'}]
+  
 
-   }
-
+  renderPosts = () => {
+    const display = posts.map(post => {
+      return <Post post = {post} />
+    })
+    return display;
+  }
 
   render(){
+    
     return (
       <div className="App">
-        <h1>Welcome to brain hive</h1>
-        <Post post = {this.post}/>
+        <h1>Welcome to Brainhive</h1>
+        <div className ='postList'>
+          {this.renderPosts()} 
+        </div>
       </div>
     );
   }
